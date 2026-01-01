@@ -1,0 +1,45 @@
+#!/bin/bash -l
+
+#<-- MANDATORY USER EDIT HERE -->
+# Set SCC project
+#$ -P onr
+
+# Request a node with minimum 4 GB of memory
+#$ -l mem_per_core=4G
+
+# Request 24 hours of run-time
+#$ -l h_rt=24:00:00
+
+# Give job a name
+#$ -N ridge
+
+# Combine output and error files into a single file
+#$ -j y
+
+# Allow multiple cores to be used on a single node
+#$ -pe omp 8
+
+#<-- MANDATORY USER EDIT HERE -->
+# Submit an array job with N tasks
+#$ -t 1-23
+
+# Load desired modules
+module load python3
+
+# Keep track of information related to the current job
+echo "=========================================================="
+echo "Start date : $(date)"
+echo "Job name : $JOB_NAME"
+echo "Job ID : $JOB_ID  $SGE_TASK_ID"
+echo "=========================================================="
+
+
+python /projectnb/sternlab/kisenburg/ConnectomeFingerprinting/Code/Ridge/ridge_function_rh_xyscale_2.py
+
+
+
+
+
+
+
+

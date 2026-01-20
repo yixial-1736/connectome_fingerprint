@@ -12,12 +12,12 @@ The next codes need to be updated based on the hypotheses:
 1. `vertices_time_series.m` - 																														
     -Function: `make_search_space.m` - This uses the annotation file to extract these values.
 2. `make_fc_mx.qsub` & `make_fc_mx.m` - The qsub wrapper runs the functional connectivity matrices for all of the subjects. 
-3. `zero_v_ts.m` - Finds any nan values in the resting-state connectivity matrix and then removes them from that matrix. This will need to be done later on to the activation files and the group average data. 
+3. `zero_v_ts.m` - Finds any nan values in the resting-state connectivity matrix and then removes them from that matrix. This will need to be done later on the activation files and the group average data. 
 4. `vert_act_in_searchspace.m` -Extract task-based activity values from the parcels in the searchspace. 
 5. `remove_v_act.m` - Removes the vertices that had nan values in the search-space activation variable. 
-6.`ridge_wrapper_lh.qsub` & `ridge_function_network_lh.py` - Runs the ridge regression analysis in parallel for the left hemisphere. (Note in this Github Project, we used simulated FC matrices)
+6.`ridge_wrapper_lh.qsub` & `ridge_function_network_lh.py` - Runs the ridge regression analysis in parallel for the left hemisphere. (Note: in this GitHub project, we used simulated FC matrices)
 7.`ridge_wrapper_rh.qsub` & `ridge_function_network_rh.py` - Runs the ridge regression analysis in parallel for the right hemisphere. 
-8. 'permutation_test.ipynb' - permuted the ridge model’s predicted activation pattern; and the similiarity to the actual activations is compared between ridge predictions and permutations.
+8. 'permutation_test.ipynb' - permuted the ridge model’s predicted activation pattern, and the similarity to the actual activations is compared between ridge predictions and permutations.
 
 Outputs of each script:
 1. `vertices_time_series_3.m` - vert_ts.m file saved as $hemi.$SUB.Schaeferc.0$run.mat (this variables holds the time-series from all vertices in the search-space, which is based off of the hypothesis).
@@ -40,7 +40,7 @@ Right hemisphere: 'rh.nodes.txt'
 Left hemisphere: 'lh.Schaefer2018_400Parcels_7Networks_order.annot'
 Right hemisphere: 'rh.Schaefer2018_400Parcels_7Networks_order.annot'
 
--Ouptuts:
+-Outputs:
 'outputs/Ridge_Results/TxtR-vs-TxtU/'
 These saved the simulated results from the subjects generated from the 'connectome_fingerprint/Scripts/ridge_simulated_data.py'
 

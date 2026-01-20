@@ -1,4 +1,4 @@
-subslist = open('/projectnb/sternlab/kisenburg/ConnectomeFingerprinting/Code/Ridge/subjects.txt','r').read().splitlines()
+subslist = open('/ConnectomeFingerprinting/Code/Ridge/subjects.txt','r').read().splitlines()
 
 
 from sklearn.linear_model import Ridge
@@ -21,10 +21,10 @@ Hypothesis = 'hypo5'
 Contrast = 'TxtR-vs-TxtU'
 Contrast2 = 'Txt'
 Network = 'multi'
-X_test = np.genfromtxt('/projectnb/sternlab/kisenburg/ConnectomeFingerprinting/Outputs/Matrices/' + Hypothesis + '/' + Network + '/rh.'+subname+'_norm.csv', delimiter=',')
-y_test = np.genfromtxt('/projectnb/sternlab/kisenburg/ConnectomeFingerprinting/Outputs/Scan_Activations/' + Hypothesis + '/' + Contrast + '/rh.' +subname+'.csv', delimiter=',')
+X_test = np.genfromtxt('/ConnectomeFingerprinting/Outputs/Matrices/' + Hypothesis + '/' + Network + '/rh.'+subname+'_norm.csv', delimiter=',')
+y_test = np.genfromtxt('/ConnectomeFingerprinting/Outputs/Scan_Activations/' + Hypothesis + '/' + Contrast + '/rh.' +subname+'.csv', delimiter=',')
 
-SaveDir = ('/projectnb/sternlab/kisenburg/ConnectomeFingerprinting/Outputs/Ridge_Results/' + Hypothesis + '/' + Contrast + '/' + Network)
+SaveDir = ('/ConnectomeFingerprinting/Outputs/Ridge_Results/' + Hypothesis + '/' + Contrast + '/' + Network)
 
 # remove the test subject from the subject list 
 del subslist[subid]
@@ -42,8 +42,8 @@ for n in range(22):
     X_train_matrix = []
     y_train = np.empty(len(y_test))
     for sub in sublist:
-        data = np.genfromtxt('/projectnb/sternlab/kisenburg/ConnectomeFingerprinting/Outputs/Matrices/' + Hypothesis + '/' + Network + '/rh.'+sub+'_norm.csv', delimiter=',')
-        activation = np.genfromtxt('/projectnb/sternlab/kisenburg/ConnectomeFingerprinting/Outputs/Scan_Activations/'+ Hypothesis + '/' + Contrast +'/rh.'+sub+'.csv', delimiter = ',')
+        data = np.genfromtxt('/ConnectomeFingerprinting/Outputs/Matrices/' + Hypothesis + '/' + Network + '/rh.'+sub+'_norm.csv', delimiter=',')
+        activation = np.genfromtxt('/ConnectomeFingerprinting/Outputs/Scan_Activations/'+ Hypothesis + '/' + Contrast +'/rh.'+sub+'.csv', delimiter = ',')
         X_train_matrix.append(data) 
         y_train = np.hstack((y_train,activation))   
 
@@ -57,8 +57,8 @@ for n in range(22):
     #sub_test= subs_list[n]
     print('Validation-ID Inner', val_sub)
     
-    y_val = np.genfromtxt('/projectnb/sternlab/kisenburg/ConnectomeFingerprinting/Outputs/Scan_Activations/'+ Hypothesis + '/' + Contrast + '/rh.'+val_sub+'.csv', delimiter=',')
-    X_val = np.genfromtxt('/projectnb/sternlab/kisenburg/ConnectomeFingerprinting/Outputs/Matrices/' + Hypothesis + '/' + Network + '/rh.'+val_sub+'_norm.csv', delimiter=',')
+    y_val = np.genfromtxt('/ConnectomeFingerprinting/Outputs/Scan_Activations/'+ Hypothesis + '/' + Contrast + '/rh.'+val_sub+'.csv', delimiter=',')
+    X_val = np.genfromtxt('/ConnectomeFingerprinting/Outputs/Matrices/' + Hypothesis + '/' + Network + '/rh.'+val_sub+'_norm.csv', delimiter=',')
     #test_data1 = preprocessing.scale(test_data1)
 
     # Scale the training and validation data based on training data only 
@@ -89,7 +89,7 @@ a = np.mean(best_a)
 # Get the full training data and labels 
 X = np.empty(len(X_test[1]))
 for sub in subslist:
-    data2 = np.genfromtxt('/projectnb/sternlab/kisenburg/ConnectomeFingerprinting/Outputs/Matrices/' + Hypothesis + '/' + Network + '/rh.'+subname+'_norm.csv', delimiter=',')
+    data2 = np.genfromtxt('/ConnectomeFingerprinting/Outputs/Matrices/' + Hypothesis + '/' + Network + '/rh.'+subname+'_norm.csv', delimiter=',')
     X = np.vstack((X,data2))
 X = np.delete(X,0,0)
 X = x_scaler.fit_transform(X)
@@ -97,7 +97,7 @@ X = x_scaler.fit_transform(X)
 
 y = np.empty(len(y_test))
 for sub in subslist:
-    activation2 = np.genfromtxt('/projectnb/sternlab/kisenburg/ConnectomeFingerprinting/Outputs/Scan_Activations/'+ Hypothesis + '/' + Contrast + '/rh.'+sub+'.csv', delimiter = ',')
+    activation2 = np.genfromtxt('/ConnectomeFingerprinting/Outputs/Scan_Activations/'+ Hypothesis + '/' + Contrast + '/rh.'+sub+'.csv', delimiter = ',')
     y = np.hstack((y,activation2))
 y = np.delete(y,slice(0,len(y_test)),0)
 

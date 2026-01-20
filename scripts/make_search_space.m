@@ -24,4 +24,4 @@ end
 vert_ts=vert_ts(inds,:);
 % example:
 % label_names = {'7Networks_LH_Cont_PFCl_4','7Networks_LH_Cont_PFCl_3','7Networks_LH_Cont_PFCl_5','7Networks_LH_Cont_PFCl_6','7Networks_LH_Cont_PFCl_8','7Networks_LH_Cont_PFCl_2'}
-% make_search_space('/projectnb/sternlab/BME/scan_data/RPMS_2001/rest/018/f.mcpr.sm3.sc.int.bpf.resid.fsaverage.lh.nii.gz','/projectnb/sternlab/BME/scan_data/fsaverage/label/lh.Schaefer2018_400Parcels_7Networks_order.annot',label_names)
+% make_search_space('/f.mcpr.sm3.sc.int.bpf.resid.fsaverage.lh.nii.gz','/scan_data/fsaverage/label/lh.Schaefer2018_400Parcels_7Networks_order.annot',label_names)

@@ -8,11 +8,11 @@ clear all;close all;clc
 %hypo 3 & 4 are CCN lPFC predicted by different configurations of sensory
 %and cognitive network matrices
 %hypo 5 is visual IT predicted by the whole-brain
-Hypothesis = {'hypo5'}; 
-pDir = '/projectnb/sternlab/kisenburg/ConnectomeFingerprinting/';
+Hypothesis = {'hypo'}; 
+pDir = '/connectome_fingerprint/';
 DataDir = strcat(pDir, 'Scan_Data/timeseries/');
 SaveDir = char(strcat(pDir,'Outputs/Matrices/',Hypothesis));
-NodePath = '/projectnb/sternlab/kisenburg/mk_annot_TM/7Nets/';
+NodePath = '/network/';
 LeftNodes = importdata(strcat(NodePath, 'lh.nodes.txt')); LeftNodes = LeftNodes(2:end);
 RightNodes = importdata(strcat(NodePath, 'rh.nodes.txt')); RightNodes = RightNodes(2:end);
 
@@ -30,7 +30,7 @@ subs = importdata(char(strcat(pDir,'Code/Ridge/subjects.txt')));
 hemis = {'lh','rh'};
 removeparcels={lh_parcel, rh_parcel};
 mkdir(SaveDir);
-s = str2num(getenv('SGE_TASK_ID'));
+s = str2num(getenv('Sub_ID'));
 
 subj = subs{s}; 
 runs = importdata(char(strcat(pDir,'Scan_Data/',subj,'/rest/runs')));

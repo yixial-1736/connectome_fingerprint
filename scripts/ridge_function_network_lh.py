@@ -89,7 +89,7 @@ a = np.mean(best_a)
 # Get the full training data and labels 
 X = np.empty(len(X_test[1]))
 for sub in subslist:
-    data2 = np.genfromtxt('/ConnectomeFingerprinting/Outputs/Matrices/' + Hypothesis + '/' + Network + '/lh.'+subname+'_norm.csv', delimiter=',')
+    data2 = np.genfromtxt('/ConnectomeFingerprinting/Outputs/Matrices/' + Hypothesis + '/' + Network + '/lh.'+sub+'_norm.csv', delimiter=',')
     X = np.vstack((X,data2))
 X = np.delete(X,0,0)
 X = x_scaler.fit_transform(X)
